@@ -24,6 +24,7 @@ export class SongStep {
         <input id="song-input" class="song-input" placeholder="輸入歌名或歌手" autocomplete="off"
           role="combobox" aria-expanded="false" aria-controls="song-list"
           value="${picked ? esc(`${picked.title} － ${picked.artist}`) : ''}">
+        <div data-ref="drop"></div>
       </div>
       <div data-ref="below"></div>`;
     this.input = this.root.querySelector('input');
@@ -80,6 +81,7 @@ export class SongStep {
     this.root.querySelector('[data-ref="pill"]').outerHTML = `<span data-ref="pill" ${s ? 'class="pill"' : ''}>${s ? '完成' : ''}</span>`;
     this.root.querySelector('[data-ref="pill"]').style.marginLeft = 'auto';
     let html = '';
+    let drop = '';   // 建議清單蓋在輸入框下面，不撐高卡片
     let error = false;
     if (s) {
       html = `<div class="song-pick"><span>原曲音域 <b>${s.low} － ${s.high}</b></span><span class="demo-mark">音域為估計值（示意資料）</span></div>
@@ -87,10 +89,10 @@ export class SongStep {
     } else if (q && this.open) {
       const list = this.matches();
       if (list.length) {
-        html = `<ul class="song-list" id="song-list" role="listbox">${list.map((m, i) => `
+        drop = `<ul class="song-list" id="song-list" role="listbox">${list.map((m, i) => `
           <li role="option" data-id="${m.id}" class="${i === this.active ? 'is-active' : ''}" aria-selected="${i === this.active}">
-            ${mark(m.title, q)} － ${mark(m.artist, q)}</li>`).join('')}</ul>
-          <div class="song-meta">${COUNT_NOTE}</div>`;
+            ${mark(m.title, q)} － ${mark(m.artist, q)}</li>`).join('')}</ul>`;
+        html = `<div class="song-meta">${COUNT_NOTE}</div>`;
       } else {
         error = true;
         html = `<div class="song-empty" role="status"><b>找不到「${esc(q)}」</b><span>${COUNT_NOTE}，<br>試試其他關鍵字</span></div>`;
@@ -104,6 +106,7 @@ export class SongStep {
     this.input.classList.toggle('is-error', error);
     this.input.setAttribute('aria-expanded', String(!!(q && this.open && !s)));
     below.innerHTML = html;
+    this.root.querySelector('[data-ref="drop"]').innerHTML = drop;
     below.style.display = 'contents';
   }
 

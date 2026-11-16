@@ -5,7 +5,7 @@
 /* 步驟卡 */
 .card {
   background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 24px;
-  display: flex; flex-direction: column; gap: 16px; min-height: 420px;
+  display: flex; flex-direction: column; gap: 16px; min-height: 460px; /* 最長的狀態（聽音跟唱完成）也放得下，切換狀態時卡片不會忽長忽短 */
 }
 .card__head { display: flex; align-items: center; gap: 10px; }
 .card__no { font-family: var(--font-num); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
@@ -18,7 +18,8 @@
 .readout { border-top: var(--dot-line); border-bottom: var(--dot-line); padding: 12px 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
 .readout--live { padding: 14px 0; gap: 12px; }
 .readout__row { display: flex; justify-content: space-between; align-items: baseline; }
-.readout__row b.big { font-family: var(--font-num); font-size: 20px; }
+.readout__row b.big { font-family: var(--font-num); font-size: 20px; line-height: 28px; }
+.readout--live .readout__row { min-height: 28px; }
 .readout__row .muted { color: var(--sub); }
 .wave { display: flex; align-items: center; gap: 4px; height: 42px; }
 .wave__bar { width: 6px; height: 6px; border-radius: 3px; background: var(--off-bg); transition: height .08s linear; }
@@ -52,7 +53,7 @@
 .song-input:focus { outline: none; box-shadow: 0 0 0 4px var(--accent-soft); }
 .song-input.is-error { border-color: var(--red); }
 .song-input.is-error:focus { box-shadow: 0 0 0 4px var(--red-bg); }
-.song-list { margin-top: -8px; border: var(--line); border-radius: 20px; padding: 6px; display: flex; flex-direction: column; list-style: none; margin-bottom: 0; }
+.song-list { position: absolute; left: 0; right: 0; top: calc(100% + 8px); z-index: 5; margin: 0; background: var(--white); border: var(--line); border-radius: 20px; padding: 6px; display: flex; flex-direction: column; list-style: none; box-shadow: 0 8px 20px rgba(30, 30, 30, 0.12); }
 .song-list li { padding: 10px 14px; border-radius: 14px; font-size: 15px; cursor: pointer; }
 .song-list li.is-active, .song-list li:hover { background: var(--note); }
 .song-empty { border: 2px dashed var(--off-line); border-radius: 20px; padding: 18px 14px; display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center; }

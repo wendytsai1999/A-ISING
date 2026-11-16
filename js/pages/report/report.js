@@ -68,7 +68,7 @@ async function main() {
   if (!REC_ID && take.pending) {
     $('#main').innerHTML = `
       ${headHTML(title, sub)}
-      ${cards('<div class="r-ph" style="width:90%"></div><div class="r-ph" style="width:70%"></div>')}
+      ${cards(`<div class="r-eval-wait"><p class="r-eval" aria-hidden="true">${summary(result)}</p><div class="r-eval-wait__ph"><div class="r-ph" style="width:90%"></div><div class="r-ph" style="width:70%"></div></div></div>`)}
       <section class="r-panel r-panel--center" id="az"></section>`;
     await playAnalyzing($('#az'), makeRun(), { steps: ANALYZE_STEPS, title: 'AI 正在分析你的演唱' });
     store.update((d) => { if (d.take) d.take.pending = false; });

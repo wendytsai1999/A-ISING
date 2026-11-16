@@ -10,6 +10,10 @@
 .r-card { background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 20px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; }
 .r-card--eval { align-items: stretch; justify-content: flex-start; padding: 24px 28px; }
 .r-card--eval b { font-size: 17px; }
+/* 分析中：先用看不見的評價文字撐出最後的高度，分析完換成文字時卡片不會變高 */
+.r-eval-wait { position: relative; }
+.r-eval-wait > .r-eval { visibility: hidden; }
+.r-eval-wait__ph { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 10px; }
 .r-big { font-family: var(--font-num); font-weight: 900; line-height: 1; white-space: nowrap; }
 .r-big__num { font-size: 64px; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
 .r-big__of { font-size: 26px; }

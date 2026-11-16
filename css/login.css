@@ -1,0 +1,41 @@
+/* 登入頁 */
+.login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; padding: 40px 16px;
+}
+.login__circle { position: absolute; border-radius: 50%; background: var(--deco); }
+.login__circle--a { left: -160px; bottom: -180px; width: 560px; height: 560px; }
+.login__circle--b { right: -120px; top: -180px; width: 480px; height: 480px; }
+.login__card {
+  position: relative; width: 520px; max-width: 100%; padding: 56px 56px 48px;
+  background: var(--white); border: var(--line); border-radius: var(--r-big);
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.login__logo { width: 96px; height: 96px; border-radius: 50%; border: 2px dashed var(--ink); display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--sub); }
+.login__name { font-family: var(--font-num); font-weight: 900; font-size: 40px; letter-spacing: 0.12em; }
+.login__tag { color: var(--sub); font-size: 15px; }
+.login__rule { width: 100%; border-top: var(--dot-line); margin: 8px 0; }
+.login__google { margin-top: 8px; height: 56px; padding: 0 32px; font-size: 16px; font-weight: 700; gap: 12px; }
+.login__g { width: 28px; height: 28px; border-radius: 50%; border: var(--line); display: flex; align-items: center; justify-content: center; font-size: 14px; font-family: var(--font-num); font-weight: 900; }
+.login__fine { font-size: 12px; color: var(--sub); }
+
+/* 假的帳戶選擇畫面 */
+.chooser {
+  width: 440px; max-width: 100%; background: var(--white); border-radius: 28px; border: var(--line);
+  padding: 36px 36px 28px; display: flex; flex-direction: column; gap: 6px; animation: pop-in .22s ease;
+}
+.chooser__g { width: 44px; height: 44px; border-radius: 50%; border: var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--font-num); font-weight: 900; font-size: 20px; margin-bottom: 10px; }
+.chooser__title { font-size: 22px; font-weight: 700; }
+.chooser__sub { font-size: 14px; color: var(--sub); margin-bottom: 14px; }
+.chooser__list { border-top: var(--dot-line); }
+.chooser__acct {
+  width: 100%; display: flex; align-items: center; gap: 14px; padding: 14px 8px; background: none; border: 0;
+  border-bottom: var(--dot-line); cursor: pointer; text-align: left; font-size: 15px;
+}
+.chooser__acct:hover { background: var(--note); }
+.chooser__avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); border: var(--line); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+.chooser__mail { font-size: 13px; color: var(--sub); }
+.chooser__other { color: var(--sub); }
+.chooser__other .chooser__avatar { background: var(--white); border-style: dashed; }
+.chooser__note { margin-top: 12px; font-size: 12px; color: var(--off-text); text-align: center; }
+.chooser__loading { display: flex; flex-direction: column; align-items: center; gap: 18px; padding: 30px 0 18px; font-size: 15px; }

@@ -1,0 +1,65 @@
+{
+  "note": "假的使用者歌聲：每句一種唱法（profile）。good＝唱得很好、flat＝平均偏低、sharp＝平均偏高、unstable＝高低不穩、droop＝尾音下滑、rush＝節奏搶拍、drag＝節奏拖拍、unclear＝有聲音但聽不清楚（不評分）。改這裡就能換報告內容。",
+  "profiles": {
+    "good": {
+      "offset": 0
+    },
+    "flat": {
+      "offset": -0.8
+    },
+    "sharp": {
+      "offset": 0.7
+    },
+    "unstable": {
+      "swing": 0.8
+    },
+    "droop": {
+      "tailDrop": -1.3
+    },
+    "rush": {
+      "early": 0.3
+    },
+    "drag": {
+      "early": -0.3
+    },
+    "unclear": {}
+  },
+  "lines": [
+    "good",
+    "flat",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "rush",
+    "good",
+    "good",
+    "sharp",
+    "good",
+    "unstable",
+    "good",
+    "good",
+    "drag",
+    "good",
+    "flat",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "good",
+    "unclear",
+    "good",
+    "good",
+    "flat",
+    "good",
+    "good",
+    "rush",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "sharp",
+    "good",
+    "good"
+  ]
+}

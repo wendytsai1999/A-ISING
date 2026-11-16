@@ -1,0 +1,19 @@
+{
+  "note": "紀錄頁的六筆假紀錄（最多 6 筆）。有 song 的可以點「查看」看完整報告：lines＝唱了哪幾句（從第幾句到第幾句，0 起算），singer／voice＝那次的唱法檔和歌聲檔。沒有 song 的是其他歌，只有 stats（唱對句數、平均偏差幾個半音、各種問題的句數），給追蹤報告用。練唱頁按 AI 分析後，這次的演唱會取代同一首歌 latest 的那筆。",
+  "max": 6,
+  "records": [
+    { "id": "tide-1114", "date": "2026/11/14", "song": "tide", "title": "愛如潮水", "artist": "張信哲", "key": -1, "lines": [0, 15], "singer": "tide-demo-user", "voice": "tide-me", "latest": true },
+    { "id": "rewind-1112", "date": "2026/11/12", "song": "rewind", "title": "倒帶", "artist": "蔡依林", "key": 1, "lines": [0, 15], "singer": "rewind-demo-user", "voice": "rewind-me", "latest": true },
+    { "id": "tide-1108", "date": "2026/11/08", "song": "tide", "title": "愛如潮水", "artist": "張信哲", "key": -1, "lines": [0, 15], "singer": "tide-demo-user-1108", "voice": "tide-me-1108" },
+    { "id": "rewind-1105", "date": "2026/11/05", "song": "rewind", "title": "倒帶", "artist": "蔡依林", "key": 1, "lines": [0, 15], "singer": "rewind-demo-user-1105", "voice": "rewind-me-1105" },
+    { "id": "luck-1030", "date": "2026/10/30", "title": "小幸運", "artist": "田馥甄", "key": 1,
+      "stats": { "scored": 14, "okLines": 9, "avgDev": 0.42, "issues": { "flat": 3, "droop": 2, "rush": 1 } } },
+    { "id": "later-1026", "date": "2026/10/26", "title": "後來", "artist": "劉若英", "key": 0,
+      "stats": { "scored": 16, "okLines": 9, "avgDev": 0.47, "issues": { "flat": 2, "sharp": 2, "droop": 3, "unstable": 1 } } }
+  ],
+  "demo": {
+    "note": "展示情境用：紀錄已滿時等待存入的這次演唱、預設的認識你的聲音",
+    "pending": { "id": "rewind-new", "song": "rewind", "title": "倒帶", "artist": "蔡依林", "key": 1, "lines": [0, 15], "singer": "rewind-demo-user", "voice": "rewind-me" },
+    "voice": { "date": "2026/11/12", "range": { "low": "G#3", "high": "D#5" }, "pitchOk": 3, "song": "rewind" }
+  }
+}

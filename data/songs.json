@@ -1,0 +1,25 @@
+{
+  "note": "音域是估計的原曲音域（示意資料），用來推薦 Key，不是精確採譜。〈倒帶〉是從原唱抓出來的主要音域。",
+  "songs": [
+    { "id": "rewind",       "title": "倒帶",     "artist": "蔡依林", "low": "G3", "high": "B4" },
+    { "id": "say-love-you", "title": "說愛你",   "artist": "蔡依林", "low": "D4", "high": "A4" },
+    { "id": "little-luck",  "title": "小幸運",   "artist": "田馥甄", "low": "G3", "high": "A#4" },
+    { "id": "later",        "title": "後來",     "artist": "劉若英", "low": "G3", "high": "C5" },
+    { "id": "courage",      "title": "勇氣",     "artist": "梁靜茹", "low": "A3", "high": "C#5" },
+    { "id": "ningxia",      "title": "寧夏",     "artist": "梁靜茹", "low": "A3", "high": "A4" },
+    { "id": "encounter",    "title": "遇見",     "artist": "孫燕姿", "low": "G3", "high": "B4" },
+    { "id": "dark-sky",     "title": "天黑黑",   "artist": "孫燕姿", "low": "G3", "high": "D5" },
+    { "id": "those-years-wf", "title": "匆匆那年", "artist": "王菲", "low": "F3", "high": "C5" },
+    { "id": "torment",      "title": "煎熬",     "artist": "李佳薇", "low": "G3", "high": "E5" },
+    { "id": "balloon",      "title": "告白氣球", "artist": "周杰倫", "low": "B2", "high": "G4" },
+    { "id": "sunny-day",    "title": "晴天",     "artist": "周杰倫", "low": "A2", "high": "E4" },
+    { "id": "rice-field",   "title": "稻香",     "artist": "周杰倫", "low": "B2", "high": "E4" },
+    { "id": "jiangnan",     "title": "江南",     "artist": "林俊傑", "low": "B2", "high": "A4" },
+    { "id": "practice-love","title": "修煉愛情", "artist": "林俊傑", "low": "C3", "high": "A4" },
+    { "id": "those-years",  "title": "那些年",   "artist": "胡夏",   "low": "B2", "high": "A4" },
+    { "id": "actor",        "title": "演員",     "artist": "薛之謙", "low": "A2", "high": "F#4" },
+    { "id": "little-song",  "title": "小情歌",   "artist": "蘇打綠", "low": "C3", "high": "A4" },
+    { "id": "kiss-goodbye", "title": "吻別",     "artist": "張學友", "low": "A2", "high": "E4" },
+    { "id": "love-tide",    "title": "愛如潮水", "artist": "張信哲", "low": "B2", "high": "B4" }
+  ]
+}

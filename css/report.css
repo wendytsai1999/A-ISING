@@ -1,0 +1,89 @@
+/* 練唱報告頁（照 Mid 的 Report.dc.html） */
+.r-head { display: flex; align-items: flex-end; gap: 16px; }
+.r-head__title { display: flex; flex-direction: column; gap: 6px; }
+.r-head .p-head__row { display: flex; align-items: baseline; gap: 14px; }
+.r-head__sub { font-size: 16px; color: var(--sub); }
+.r-head__ai { margin-left: auto; font-size: 13px; padding: 6px 16px; border-radius: var(--r-pill); background: var(--accent-soft); border: var(--line); white-space: nowrap; }
+
+/* 上方：唱對句數、Key、綜合評價 */
+.r-cards { display: grid; grid-template-columns: 210px 210px minmax(0, 1fr); gap: 20px; }
+.r-card { background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 20px; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: center; }
+.r-card--eval { align-items: stretch; justify-content: flex-start; padding: 24px 28px; }
+.r-card--eval b { font-size: 17px; }
+.r-big { font-family: var(--font-num); font-weight: 900; line-height: 1; white-space: nowrap; }
+.r-big__num { font-size: 64px; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
+.r-big__of { font-size: 26px; }
+.r-card__label { font-size: 14px; color: var(--sub); }
+.r-eval { font-size: 15px; line-height: 2; }
+.r-ph { height: 14px; border-radius: 7px; background: var(--deco); }
+
+/* 大白框：逐句建議／分析中 */
+.r-panel { background: var(--white); border: var(--line); border-radius: var(--r-big); padding: 28px 36px; display: flex; flex-direction: column; }
+.r-panel--center { padding: 36px 48px; min-height: 360px; justify-content: center; }
+.r-panel__head { display: flex; align-items: center; padding-bottom: 14px; }
+.r-panel__head b { font-size: 17px; }
+.r-panel__head span { margin-left: auto; font-size: 13px; color: var(--sub); }
+.r-none { padding: 18px 0; border-top: var(--dot-line); color: var(--sub); }
+
+.r-line { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; align-items: start; padding: 18px 0; border-top: var(--dot-line); }
+.r-line__no { width: 34px; height: 34px; border-radius: 50%; border: var(--line); display: flex; align-items: center; justify-content: center; font-family: var(--font-num); font-weight: 700; font-size: 13px; box-sizing: border-box; }
+.r-line__body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.r-line__advice { font-size: 14px; line-height: 1.8; color: var(--sub); }
+.r-line__btns { display: flex; gap: 8px; }
+.r-line.is-unclear .r-line__no { border-color: var(--off-line); color: var(--off-text); }
+
+.r-tag { align-self: flex-start; font-size: 12px; padding: 2px 10px; border-radius: var(--r-pill); border: 2px solid; white-space: nowrap; }
+.r-tag--good { background: #E3F0E6; border-color: var(--green); color: #2F6E45; }
+.r-tag--bad { background: var(--red-bg); border-color: var(--red); color: var(--red-text); }
+.r-tag--grey { background: var(--off-bg); border-color: var(--off-line); color: var(--off-text); }
+
+.r-pill { font: inherit; font-size: 13px; padding: 6px 14px; border-radius: var(--r-pill); border: var(--line); background: var(--white); color: var(--ink); white-space: nowrap; cursor: pointer; letter-spacing: var(--track); }
+.r-pill:hover { background: var(--note); }
+.r-pill.is-playing { background: var(--ink); color: var(--white); }
+
+/* 每個字一欄 */
+.r-chars { display: flex; gap: 4px; flex-wrap: wrap; }
+.r-ch { width: 48px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.r-ch__t { font-size: 16px; }
+.r-ch__bars { position: relative; width: 40px; height: 52px; }
+.r-bar { position: absolute; left: 0; width: 40px; height: 7px; border-radius: 4px; }
+.r-bar--target { background: var(--off-line); }
+.r-bar--ok { background: var(--green); }
+.r-bar--off { background: var(--red); }
+.r-bar--drop { left: 18px; width: 24px; transform: rotate(16deg); transform-origin: left center; }
+.r-beat { position: absolute; left: -1px; top: -4px; height: 60px; border-left: 2px dashed var(--red); }
+.r-ch__note { font-size: 11px; font-family: var(--font-num); font-weight: 700; color: var(--off-text); line-height: 1; }
+.r-ch__dev { font-size: 11px; font-family: var(--font-num); font-weight: 700; color: var(--red-text); line-height: 1.2; white-space: nowrap; min-height: 13px; }
+.r-ch.is-unsung .r-ch__t { color: var(--off-line); }
+
+/* 整首播放 */
+.r-player { position: relative; background: var(--white); border: var(--line); border-radius: var(--r-pill); min-height: 76px; padding: 0 16px 0 32px; box-sizing: border-box; display: flex; align-items: center; gap: 18px; }
+.r-player__title { font-size: 16px; white-space: nowrap; }
+.r-seg { display: flex; border: var(--line); border-radius: var(--r-pill); overflow: hidden; flex-shrink: 0; }
+.r-seg button { font: inherit; font-size: 14px; border: 0; background: var(--white); padding: 6px 14px; cursor: pointer; white-space: nowrap; letter-spacing: var(--track); }
+.r-seg button + button { border-left: var(--line); }
+.r-seg button[aria-pressed="true"] { background: var(--accent); font-weight: 700; }
+.r-progress { --p: 0%; flex-grow: 1; min-width: 80px; height: 8px; border-radius: 4px; appearance: none; -webkit-appearance: none; cursor: pointer;
+  background: linear-gradient(to right, var(--accent) var(--p), #E6E0D4 var(--p)); }
+.r-progress::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--ink); }
+.r-progress::-moz-range-thumb { width: 16px; height: 16px; border: 0; border-radius: 50%; background: var(--ink); }
+.r-time { font-size: 14px; font-family: var(--font-num); font-weight: 700; white-space: nowrap; }
+.r-play { flex-shrink: 0; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); border: var(--line); font: inherit; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.r-play .spinner, .r-dl .spinner { width: 18px; height: 18px; border-width: 3px; }
+.r-dl { position: relative; display: inline-flex; }
+.r-dl .btn.is-open { background: var(--accent-soft); }
+.r-menu { position: absolute; right: 0; top: 60px; z-index: 5; width: 300px; box-sizing: border-box; padding: 8px; background: var(--white); border: var(--line); border-radius: 22px; display: flex; flex-direction: column; box-shadow: 0 6px 0 rgba(30, 30, 30, 0.12); }
+.r-menu button { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; font: inherit; font-size: 15px; color: var(--ink); background: none; border: 0; text-align: left; cursor: pointer; letter-spacing: var(--track); }
+.r-menu button:hover { background: var(--note); }
+.r-menu button > span:last-child { display: flex; flex-direction: column; gap: 2px; }
+.r-menu small { font-size: 12px; color: var(--sub); }
+.r-menu__icon { width: 30px; height: 30px; flex-shrink: 0; border-radius: 50%; border: var(--line); display: flex; align-items: center; justify-content: center; font-size: 14px; box-sizing: border-box; }
+
+.r-foot { display: flex; gap: 16px; }
+.r-foot__right { margin-left: auto; }
+.r-foot__again { font-weight: 400; }
+
+/* 沒有報告 */
+.r-empty { background: var(--white); border: var(--line); border-radius: var(--r-big); padding: 56px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; }
+.r-empty h2 { font-size: 24px; letter-spacing: .12em; }
+.r-empty p { font-size: 15px; color: var(--sub); line-height: 1.9; }

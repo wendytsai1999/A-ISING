@@ -1,0 +1,28 @@
+/* 共用設計變數：數值取自 Mid 原型 */
+:root {
+  --bg: #F5F0E6;          /* 頁面底色 */
+  --ink: #1E1E1E;         /* 主要文字、框線 */
+  --sub: #5E5750;         /* 次要文字 */
+  --accent: #E8BE1E;      /* 芥末黃（主要按鈕） */
+  --accent-soft: #F7E7A6; /* 淡黃（標籤、高亮） */
+  --note: #FBF3D2;        /* 可關提示框底色 */
+  --off-bg: #E6E0D4;      /* 停用底色 */
+  --off-line: #CFC7B8;    /* 停用框線 */
+  --off-text: #8F877C;    /* 停用文字 */
+  --green: #3E8E5A;       /* 唱準 */
+  --red: #C8553D;         /* 錯誤、錄音中 */
+  --red-text: #A3402B;
+  --red-bg: #F6E1DB;      /* 不可關提示框底色 */
+  --deco: #EDE5D6;        /* 裝飾圓 */
+  --white: #FFFFFF;
+
+  --font: 'Huninn', 'Zen Maru Gothic', sans-serif;
+  --font-num: 'Zen Maru Gothic', sans-serif;
+  --track: 0.08em;
+  --line: 2px solid var(--ink);
+  --dot-line: 2px dotted var(--ink);
+
+  --r-card: 28px;
+  --r-big: 40px;
+  --r-pill: 999px;
+}

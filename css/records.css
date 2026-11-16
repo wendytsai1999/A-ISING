@@ -1,0 +1,63 @@
+/* 紀錄頁（照 Mid 的 Records 系列） */
+.rc-head { display: flex; align-items: flex-end; gap: 16px; }
+.rc-count { margin-left: auto; font-size: 14px; padding: 6px 16px; border-radius: var(--r-pill); background: var(--white); border: var(--line); white-space: nowrap; }
+
+/* 認識你的聲音 */
+.rc-voice { background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 18px 28px; display: flex; align-items: center; gap: 24px; font-size: 15px; white-space: nowrap; min-width: 0; }
+.rc-voice__title { font-size: 16px; }
+.rc-voice__date { color: var(--sub); }
+.rc-voice__song { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.rc-voice__del { margin-left: auto; }
+.rc-voice.is-empty { white-space: normal; }
+.rc-voice .muted { color: var(--sub); font-size: 14px; }
+.rc-voice .link-arrow { margin-left: auto; white-space: nowrap; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--ink); }
+
+.rc-pill { font: inherit; font-size: 13px; padding: 4px 14px; border-radius: var(--r-pill); border: var(--line); background: var(--white); color: var(--ink); cursor: pointer; white-space: nowrap; letter-spacing: var(--track); justify-self: start; }
+.rc-pill:hover { background: var(--note); }
+
+/* 紀錄表 */
+.rc-table { background: var(--white); border: var(--line); border-radius: var(--r-big); padding: 16px 36px; display: flex; flex-direction: column; }
+.rc-row { display: grid; grid-template-columns: 40px 120px minmax(0, 1fr) 70px 90px 70px 80px; gap: 12px; align-items: center; padding: 12px; margin: 0 -12px; border-top: var(--dot-line); font-size: 15px; }
+.rc-row--head { padding: 8px 12px; border-top: 0; font-size: 13px; color: var(--sub); }
+.rc-row.is-on { background: var(--note); border-radius: 16px; }
+.rc-row__song { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.rc-check { width: 22px; height: 22px; padding: 0; border-radius: 6px; border: var(--line); background: var(--white); font: inherit; font-size: 13px; font-weight: 700; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+.rc-row.is-on .rc-check { background: var(--accent); }
+.rc-view { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--ink); justify-self: start; white-space: nowrap; }
+.rc-new { margin-left: 8px; font-size: 11px; padding: 1px 8px; border-radius: var(--r-pill); background: var(--ink); color: var(--white); vertical-align: 2px; }
+
+.rc-bar { display: flex; align-items: center; gap: 16px; }
+.rc-bar__note { font-size: 14px; color: var(--sub); }
+
+/* 追蹤報告 */
+.rc-track { margin-top: 16px; background: var(--white); border: var(--line); border-radius: var(--r-big); padding: 40px 48px; display: flex; flex-direction: column; gap: 22px; scroll-margin-top: 24px; }
+.rc-track--center { min-height: 320px; justify-content: center; }
+.t-head { display: flex; align-items: flex-end; gap: 16px; }
+.t-head > div { display: flex; flex-direction: column; gap: 6px; }
+.t-title { margin: 0; font-size: 28px; letter-spacing: .12em; }
+.t-cards { border-top: var(--dot-line); padding-top: 18px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.t-card { flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px; padding: 16px 20px; border-radius: 22px; border: var(--line); min-width: 0; }
+.t-card__meta { font-size: 13px; color: var(--sub); }
+.t-card__song { font-size: 16px; }
+.t-card__num { font-family: var(--font-num); font-weight: 900; font-size: 30px; }
+.t-card__num small { font-size: 14px; font-weight: 700; margin-left: 12px; }
+.t-arrow { font-size: 26px; }
+.t-body { border-top: var(--dot-line); padding-top: 18px; display: flex; flex-direction: column; gap: 20px; }
+.t-summary { font-size: 16px; line-height: 1.9; }
+.t-boxes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.t-box { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px; border: var(--line); border-radius: 22px; }
+.t-box > b { font-size: 17px; padding-bottom: 8px; border-bottom: var(--dot-line); }
+.t-box ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.t-box li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.9; }
+.t-box li::before { content: ''; position: absolute; left: 0; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.t-box--good { background: #EAF3EC; }
+.t-box--good > b { color: var(--green); }
+.t-box--bad { background: var(--red-bg); }
+.t-box--bad > b { color: var(--red); }
+.t-box--todo { background: var(--note); }
+.t-note { font-size: 13px; color: var(--sub); text-align: center; }
+
+@media (max-width: 1100px) {
+  .t-boxes { grid-template-columns: minmax(0, 1fr); }
+  .rc-voice { flex-wrap: wrap; gap: 10px 20px; }
+}

@@ -1,0 +1,91 @@
+/* 首頁 */
+
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+
+/* 步驟卡 */
+.card {
+  background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 24px;
+  display: flex; flex-direction: column; gap: 16px; min-height: 420px;
+}
+.card__head { display: flex; align-items: center; gap: 10px; }
+.card__no { font-family: var(--font-num); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
+.card__name { font-size: 20px; font-weight: 700; white-space: nowrap; }
+.card__head .pill { margin-left: auto; padding: 4px 10px; letter-spacing: 0.02em; flex-shrink: 0; }
+.card__hint { font-size: 14px; line-height: 1.9; color: var(--sub); }
+.card__actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* 01 測音域 */
+.readout { border-top: var(--dot-line); border-bottom: var(--dot-line); padding: 12px 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
+.readout--live { padding: 14px 0; gap: 12px; }
+.readout__row { display: flex; justify-content: space-between; align-items: baseline; }
+.readout__row b.big { font-family: var(--font-num); font-size: 20px; }
+.readout__row .muted { color: var(--sub); }
+.wave { display: flex; align-items: center; gap: 4px; height: 42px; }
+.wave__bar { width: 6px; height: 6px; border-radius: 3px; background: var(--off-bg); transition: height .08s linear; }
+.wave__bar.on { background: var(--ink); }
+.wave__time { margin-left: auto; font-family: var(--font-num); font-weight: 700; font-size: 16px; }
+
+/* 02 聽音跟唱 */
+.phase { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--off-text); }
+.phase__step { padding: 2px 12px; border-radius: var(--r-pill); border: 2px solid transparent; }
+.phase__step.is-on { color: var(--ink); font-weight: 700; background: var(--accent-soft); border-color: var(--ink); }
+.pitchbox { height: 96px; border-radius: 16px; background: var(--bg); position: relative; overflow: hidden; }
+.pitchbox svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.pitchbox__label { position: absolute; right: 12px; top: 36px; font-family: var(--font-num); font-weight: 700; font-size: 14px; }
+.pitchbox__ring { position: absolute; left: 50%; top: 50%; width: 46px; height: 46px; margin: -23px 0 0 -23px; border-radius: 50%; border: 2px solid var(--ink); animation: ring 1s ease-out infinite; pointer-events: none; }
+@keyframes ring { from { transform: scale(.4); opacity: 1; } to { transform: scale(1.8); opacity: 0; } }
+.dots { display: flex; gap: 8px; }
+.dot { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border: 2px solid var(--off-line); }
+.dot--ok { background: var(--green); color: var(--white); border-color: var(--green); }
+.dot--off { background: var(--red); color: var(--white); border-color: var(--red); }
+.dot--none { background: var(--off-bg); color: var(--off-text); }
+.dot--now { background: var(--accent); border-color: var(--ink); color: var(--ink); }
+.tally { font-size: 14px; line-height: 1.8; }
+
+/* 03 選歌 */
+.song-label { font-size: 14px; line-height: 1.9; color: var(--sub); }
+.song-field { position: relative; }
+.song-input {
+  width: 100%; height: 48px; padding: 0 20px; border-radius: var(--r-pill); border: var(--line);
+  background: var(--white); font-size: 15px; font-family: inherit; letter-spacing: var(--track); color: var(--ink);
+}
+.song-input:focus { outline: none; box-shadow: 0 0 0 4px var(--accent-soft); }
+.song-input.is-error { border-color: var(--red); }
+.song-input.is-error:focus { box-shadow: 0 0 0 4px var(--red-bg); }
+.song-list { margin-top: -8px; border: var(--line); border-radius: 20px; padding: 6px; display: flex; flex-direction: column; list-style: none; margin-bottom: 0; }
+.song-list li { padding: 10px 14px; border-radius: 14px; font-size: 15px; cursor: pointer; }
+.song-list li.is-active, .song-list li:hover { background: var(--note); }
+.song-empty { border: 2px dashed var(--off-line); border-radius: 20px; padding: 18px 14px; display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center; }
+.song-empty b { font-size: 15px; }
+.song-empty span { font-size: 13px; line-height: 1.8; color: var(--sub); }
+.song-meta { font-size: 13px; color: var(--sub); line-height: 1.8; }
+.song-pick { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-top: var(--dot-line); border-bottom: var(--dot-line); font-size: 14px; }
+
+/* 底部列 */
+.bar { display: flex; align-items: center; gap: 16px; }
+.bar__note { font-size: 13px; color: var(--sub); }
+.bar .link-arrow { margin-left: auto; }
+
+/* 報告區 */
+.report {
+  margin-top: 16px; background: var(--white); border: var(--line); border-radius: var(--r-big);
+  padding: 40px 48px; display: flex; flex-direction: column; gap: 22px; animation: pop-in .3s ease;
+}
+.report__head { display: flex; align-items: flex-end; gap: 16px; }
+.report__head > div { display: flex; flex-direction: column; gap: 6px; }
+.report__title { font-size: 28px; font-weight: 700; letter-spacing: 0.12em; }
+.report__date { font-size: 14px; color: var(--sub); padding-bottom: 4px; }
+.report__ai { margin-left: auto; font-size: 13px; padding: 6px 16px; border-radius: var(--r-pill); background: var(--accent-soft); border: var(--line); }
+.report__row { border-top: var(--dot-line); padding-top: 18px; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 16px; }
+.report__row > b { font-size: 17px; }
+.report__row p { font-size: 15px; line-height: 2; }
+.report__row p.muted { color: var(--off-text); }
+.report__stale { font-size: 13px; color: var(--sub); background: var(--note); border: var(--line); border-radius: 14px; padding: 8px 14px; }
+.recs { display: flex; flex-direction: column; gap: 10px; font-size: 15px; }
+.recs__item { display: flex; align-items: center; gap: 12px; }
+.recs__item::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
+.recs__name { flex-grow: 1; }
+.recs__range { font-size: 13px; color: var(--sub); }
+.report .btn--huge { align-self: center; margin-top: 8px; }
+.demo-mark { font-size: 12px; color: var(--off-text); }
+

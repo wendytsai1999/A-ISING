@@ -1,0 +1,81 @@
+{
+  "note": "較早那次（11/05）的假歌聲，給紀錄頁和追蹤報告用。唱法說明同 rewind-demo-user.json。",
+  "profiles": {
+    "good": {
+      "offset": 0
+    },
+    "flat": {
+      "offset": -0.8
+    },
+    "sharp": {
+      "offset": 0.7
+    },
+    "unstable": {
+      "swing": 0.8
+    },
+    "droop": {
+      "tailDrop": -1.3
+    },
+    "rush": {
+      "early": 0.3
+    },
+    "drag": {
+      "early": -0.3
+    },
+    "unclear": {}
+  },
+  "lines": [
+    "good",
+    "flat",
+    "flat",
+    "good",
+    "droop",
+    "flat",
+    "unstable",
+    "drag",
+    "droop",
+    "sharp",
+    "flat",
+    "rush",
+    "good",
+    "unclear",
+    "droop",
+    "flat",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "good",
+    "unstable",
+    "good",
+    "good",
+    "flat",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "sharp",
+    "good",
+    "rush",
+    "good",
+    "good",
+    "unstable",
+    "good",
+    "good",
+    "flat",
+    "good",
+    "unclear",
+    "good",
+    "droop",
+    "good",
+    "good",
+    "sharp",
+    "good",
+    "unstable",
+    "good",
+    "good",
+    "flat",
+    "good",
+    "droop"
+  ]
+}

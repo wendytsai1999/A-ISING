@@ -1,0 +1,65 @@
+{
+  "note": "較早那次（11/08）的假歌聲，給紀錄頁和追蹤報告用。唱法說明同 tide-demo-user.json。",
+  "profiles": {
+    "good": {
+      "offset": 0
+    },
+    "flat": {
+      "offset": -0.8
+    },
+    "sharp": {
+      "offset": 0.7
+    },
+    "unstable": {
+      "swing": 0.8
+    },
+    "droop": {
+      "tailDrop": -1.3
+    },
+    "rush": {
+      "early": 0.3
+    },
+    "drag": {
+      "early": -0.3
+    },
+    "unclear": {}
+  },
+  "lines": [
+    "flat",
+    "flat",
+    "good",
+    "droop",
+    "droop",
+    "good",
+    "rush",
+    "rush",
+    "good",
+    "sharp",
+    "flat",
+    "unstable",
+    "good",
+    "droop",
+    "drag",
+    "good",
+    "flat",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "good",
+    "unclear",
+    "good",
+    "good",
+    "flat",
+    "good",
+    "good",
+    "rush",
+    "good",
+    "good",
+    "droop",
+    "good",
+    "sharp",
+    "good",
+    "good"
+  ]
+}

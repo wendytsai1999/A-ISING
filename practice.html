@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A-ISING｜練唱</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/practice.css">
+</head>
+<body>
+  <div class="page page--fit">
+    <div id="nav"></div>
+    <main class="main practice">
+      <header class="p-head">
+        <div class="p-head__title">
+          <div class="eyebrow">PRACTICE</div>
+          <div class="p-head__row"><h1 class="main__title" id="song-title">倒帶</h1><span class="p-head__artist" id="song-artist">蔡依林</span></div>
+        </div>
+        <span class="p-status" id="status"><span class="p-status__dot"></span><span class="p-status__text">準備中</span></span>
+      </header>
+
+      <div class="pset" id="settings">
+        <div class="pset__item pset__song">
+          <span>歌曲</span>
+          <button class="pset__songbtn" id="song-btn" aria-haspopup="listbox" aria-expanded="false" aria-describedby="song-tip">倒帶 ▾</button>
+          <ul class="pset__list is-hidden" id="song-menu" role="listbox" aria-label="選歌"></ul>
+          <div class="pset__tip is-hidden" id="song-tip" role="tooltip">開始錄音後就不能換歌</div>
+        </div>
+        <span class="pset__sep"></span>
+        <div class="pset__item" role="group" aria-label="伴唱">
+          <span>伴唱</span>
+          <div class="seg" id="mode">
+            <button data-mode="original" aria-pressed="true">原唱</button>
+            <button data-mode="inst" aria-pressed="false">伴奏</button>
+          </div>
+        </div>
+        <span class="pset__sep"></span>
+        <label class="pset__item"><span>音量</span><input type="range" class="vol" id="volume" min="0" max="100" value="50" aria-label="音量"></label>
+        <span class="pset__sep"></span>
+        <div class="pset__item" id="key-box" role="group" aria-label="Key">
+          <span>Key</span>
+          <button class="kbtn" data-key="-1" aria-label="降 1 Key">−</button>
+          <b class="kval num" id="key-val">+1</b>
+          <button class="kbtn" data-key="1" aria-label="升 1 Key">＋</button>
+        </div>
+        <span class="pset__sep"></span>
+        <label class="pset__item" id="skip-box"><span>跳過前奏</span><input type="checkbox" class="switch" id="skip-intro"></label>
+        <span class="pset__sep"></span>
+        <label class="pset__item"><span>音高線</span><input type="checkbox" class="switch" id="show-pitch" checked></label>
+      </div>
+
+      <div class="ptrans">
+        <button class="pbtn" id="play-btn" aria-label="播放歌曲">▶</button>
+        <button class="recbtn" id="rec-btn"><span class="recbtn__icon"></span><span class="recbtn__text">錄音</span></button>
+        <input type="range" class="prog" id="progress" min="0" max="1000" value="0" aria-label="播放位置">
+        <span class="ptime num" id="time">00:00 / 04:24</span>
+      </div>
+
+      <section class="lyr" id="lyrics" aria-live="off">
+        <div class="lyr__lines" id="lyr-lines"></div>
+      </section>
+
+      <div class="pfoot">
+        <div class="pfoot__left" id="foot-left"></div>
+        <button class="btn btn--big" id="analyze-btn" disabled>AI 分析</button>
+      </div>
+    </main>
+  </div>
+  <audio id="a-original" preload="auto"></audio>
+  <audio id="a-inst" preload="auto"></audio>
+  <script type="module" src="js/pages/practice/practice.js"></script>
+</body>
+</html>

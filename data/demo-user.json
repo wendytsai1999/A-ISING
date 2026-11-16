@@ -1,0 +1,36 @@
+{
+  "note": "展示用假資料。first＝第一次測，retest＝按「重新」之後的結果（稍微進步，讓報告看得出更新）。",
+  "user": { "name": "示範使用者", "initial": "D", "email": "aising.demo@gmail.com" },
+  "range": {
+    "first":  { "low": "G#3", "high": "D#5" },
+    "retest": { "low": "G#3", "high": "E5" },
+    "autoStopSeconds": 15
+  },
+  "pitch": {
+    "targets": ["E4", "A3", "C4", "G4", "D4"],
+    "first":  [
+      { "result": "ok",   "cents": 12 },
+      { "result": "off", "cents": -160, "unstable": true },
+      { "result": "ok",   "cents": -22 },
+      { "result": "none" },
+      { "result": "ok",   "cents": 8 }
+    ],
+    "retest": [
+      { "result": "ok",   "cents": -10 },
+      { "result": "off",  "cents": 140 },
+      { "result": "ok",   "cents": 15 },
+      { "result": "ok",   "cents": -30 },
+      { "result": "ok",   "cents": 5 }
+    ]
+  },
+  "scenarios": {
+    "narrowRange": { "low": "E3", "high": "B3" },
+    "manyNoVoice": [
+      { "result": "ok",   "cents": 10 },
+      { "result": "none" },
+      { "result": "none" },
+      { "result": "off",  "cents": -150 },
+      { "result": "none" }
+    ]
+  }
+}

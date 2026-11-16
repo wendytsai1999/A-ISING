@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A-ISING｜首頁</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Huninn&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <div class="page">
+    <div id="nav"></div>
+    <main class="main">
+      <header class="main__head">
+        <div class="eyebrow">VOICE CHECK</div>
+        <h1 class="main__title">認識你的聲音</h1>
+        <p class="main__sub">完成下面三個步驟，系統會推薦適合你的歌和 Key。</p>
+      </header>
+
+      <div class="steps">
+        <section class="card" id="step-range" aria-label="01 測音域"></section>
+        <section class="card" id="step-pitch" aria-label="02 聽音跟唱"></section>
+        <section class="card" id="step-song" aria-label="03 選歌"></section>
+      </div>
+
+      <div class="bar">
+        <button class="btn btn--big" id="save-btn" disabled>儲存</button>
+        <span class="bar__note" id="save-note"></span>
+        <button class="link-arrow" id="skip-btn">直接練唱 →</button>
+      </div>
+
+      <section class="report is-hidden" id="report" aria-live="polite"></section>
+    </main>
+  </div>
+  <script type="module" src="js/pages/home/home.js"></script>
+</body>
+</html>

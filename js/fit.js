@@ -6,7 +6,10 @@
     var w = document.documentElement.clientWidth || window.innerWidth;
     var h = window.innerHeight;
     var z = Math.min(1, w / DESIGN_W, h / DESIGN_H);
-    document.documentElement.style.zoom = z < 0.999 ? String(z) : '';
+    var root = document.documentElement;
+    root.style.zoom = z < 0.999 ? String(z) : '';
+    // 縮小後 100vh 也會跟著變矮，所以另外給一個「整個視窗高」給 CSS 用（var(--full-h)）
+    root.style.setProperty('--full-h', (z < 0.999 ? h / z : h) + 'px');
   }
   fit();
   window.addEventListener('resize', fit);

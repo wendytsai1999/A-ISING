@@ -1,5 +1,5 @@
 /* 練唱頁（版面取自 Mid 練唱頁） */
-.page--fit { height: max(100vh, 780px); align-items: stretch; }
+.page--fit { height: max(var(--full-h, 100vh), 780px); align-items: stretch; }
 .page--fit .nav { height: auto; max-height: none; }
 .practice { gap: 18px; padding-bottom: 0; height: 100%; }
 

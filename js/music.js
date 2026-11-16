@@ -45,3 +45,6 @@ export function keyLabel(s) {
   if (s.kind === 'up') return `建議升 ${s.shift} Key`;
   return '先不推薦';
 }
+
+/** 唱準的標準：跟目標音差 ±0.5 個半音以內。聽音跟唱和練唱都用這個。 */
+export const OK_RANGE = 0.5;

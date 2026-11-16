@@ -1,8 +1,8 @@
 // 假的使用者：依 data/rewind-demo-user.json 每句的唱法，算出每個字唱成的音高。
 // 練唱頁的即時音高線、報告頁的分析、下載的假歌聲，都從這裡來，所以三個地方會一致。
-import { toName } from '../music.js';
+import { toName, OK_RANGE } from '../music.js';
 
-export const OK_RANGE = 0.5;   // ±0.5 個半音以內算準
+export { OK_RANGE };          // ±0.5 個半音以內算準（定義在 music.js，和聽音跟唱共用）
 export const LINE_OK = 0.7;    // 一句裡有唱的字，七成以上是綠色就算唱對
 export const SUNG_MIN = 0.5;   // 一個字錄到一半以上，才算有唱
 

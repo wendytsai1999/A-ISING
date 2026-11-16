@@ -5,7 +5,7 @@
 // 沒測完不是沒收到聲音，所以不跳黃色提示框。
 import { makeRun, CANCEL } from '../../util.js';
 import { alertHTML } from '../../components/alert.js';
-import { toMidi } from '../../music.js';
+import { toMidi, OK_RANGE } from '../../music.js';
 import { Voice, playTone, track } from '../../audio/synth.js';
 
 const HINT = '聽到提示音後，跟著唱出同一個音，共五個音。';
@@ -16,7 +16,7 @@ const LISTEN_MS = SING_MS + 300; // 提示音和使用者唱的一樣長
 const SILENT_MS = 2300;
 
 const centsToY = (c) => Math.max(8, Math.min(88, TARGET_Y - c * 0.11));
-const isOk = (c) => Math.abs(c) <= 50;
+const isOk = (c) => Math.abs(c) / 100 <= OK_RANGE; // c 是音分（1 個半音＝100 音分）
 
 function dotsHTML(results, current) {
   return `<div class="dots" aria-label="五個音的結果">${[0, 1, 2, 3, 4].map((i) => {

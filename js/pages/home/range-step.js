@@ -61,7 +61,7 @@ export class RangeStep {
       actions = '<button class="btn btn--dark" data-act="stop"><span class="stop-icon"></span>停止</button>';
     } else if (s === 'noVoice') {
       middle = `<p class="card__hint">${HINT}</p>
-        ${alertHTML({ heading: '沒偵測到聲音', body: '請確認耳麥有接好，靠近麥克風一點再唱一次。', closable: false })}`;
+        ${alertHTML({ heading: '沒偵測到聲音', body: '請確認耳麥有接好，靠近麥克風一點，再按「重新」唱一次。', closable: false })}`;
       actions = '<button class="btn btn--primary" data-act="start" data-lock>重新</button>';
     } else if (s === 'narrow') {
       // 結果在上、提示框在下（按 ✕ 就沿用這個結果）

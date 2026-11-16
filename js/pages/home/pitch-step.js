@@ -71,7 +71,7 @@ export class PitchStep {
           <span class="phase__step ${listen ? 'is-on' : ''}">♪ 聽提示音</span><span>→</span>
           <span class="phase__step ${listen ? '' : 'is-on'}">換你唱</span>
         </div>
-        ${this.retrying ? alertHTML({ heading: '沒聽到聲音', body: '這個音再唱一次。', closable: false }) : ''}
+        <div class="retry-slot">${this.retrying ? alertHTML({ heading: '沒聽到聲音', body: '這個音再唱一次。', closable: false }) : ''}</div>
         <div class="pitchbox" data-ref="box">
           <svg data-ref="svg" aria-hidden="true"></svg>
           <span class="pitchbox__label">${this.plan.targets[this.i]}</span>

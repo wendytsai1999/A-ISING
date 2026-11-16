@@ -4,15 +4,16 @@
 
 /* 步驟卡 */
 .card {
-  background: var(--white); border: var(--line); border-radius: var(--r-card); padding: 24px;
+  background: var(--white); border: var(--line); border-radius: var(--r-card); padding: clamp(18px, 1.9vw, 24px);
   display: flex; flex-direction: column; gap: 16px; min-height: 460px; /* 最長的狀態（聽音跟唱完成）也放得下，切換狀態時卡片不會忽長忽短 */
 }
 .card__head { display: flex; align-items: center; gap: 10px; }
-.card__no { font-family: var(--font-num); font-weight: 900; font-size: 56px; line-height: 1; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
+.card__no { font-family: var(--font-num); font-weight: 900; font-size: clamp(44px, 4.4vw, 56px); line-height: 1; color: var(--accent); -webkit-text-stroke: 2px var(--ink); }
 .card__name { font-size: 20px; font-weight: 700; white-space: nowrap; }
 .card__head .pill { margin-left: auto; padding: 4px 10px; letter-spacing: 0.02em; flex-shrink: 0; }
 .card__hint { font-size: 14px; line-height: 1.9; color: var(--sub); }
-.card__actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+.card__actions { margin-top: auto; display: flex; gap: 10px; flex-wrap: nowrap; } /* 按鈕不換行，窄螢幕也不會多出一排把卡片撐高 */
+.card__actions .btn { flex-shrink: 1; min-width: 0; padding: 0 clamp(12px, 1.6vw, 24px); }
 
 /* 01 測音域 */
 .readout { border-top: var(--dot-line); border-bottom: var(--dot-line); padding: 12px 0; display: flex; flex-direction: column; gap: 6px; font-size: 14px; }
@@ -27,6 +28,10 @@
 .wave__time { margin-left: auto; font-family: var(--font-num); font-weight: 700; font-size: 16px; }
 
 /* 02 聽音跟唱 */
+/* 「沒聽到聲音」提示的固定位置：平常空著，出現時下面的音高框和圓點不會被往下推 */
+.retry-slot { min-height: 58px; display: flex; flex-direction: column; justify-content: center; }
+.retry-slot .alert { flex-direction: row; flex-wrap: wrap; align-items: baseline; column-gap: 8px; row-gap: 0; padding: 8px 14px; border-radius: 14px; }
+.retry-slot .alert__text { line-height: 1.6; }
 .phase { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--off-text); }
 .phase__step { padding: 2px 12px; border-radius: var(--r-pill); border: 2px solid transparent; }
 .phase__step.is-on { color: var(--ink); font-weight: 700; background: var(--accent-soft); border-color: var(--ink); }
@@ -90,3 +95,15 @@
 .report .btn--huge { align-self: center; margin-top: 8px; }
 .demo-mark { font-size: 12px; color: var(--off-text); }
 
+
+/* 窄一點的螢幕（筆電放大 125% 時）：字和間距縮一點，標題列、按鈕都維持一行 */
+.phase__step { white-space: nowrap; }
+.btn .stop-icon { flex-shrink: 0; }
+@media (max-width: 1239px) {
+  .card__head { gap: 6px; }
+  .card__name { font-size: 17px; }
+  .card__head .pill { padding: 3px 7px; font-size: 11px; letter-spacing: 0; }
+  .phase { gap: 4px; font-size: 13px; }
+  .phase__step { padding: 2px 8px; }
+  .card__actions .btn { font-size: 14px; gap: 6px; }
+}

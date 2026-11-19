@@ -20,7 +20,7 @@ export function startTour(allSteps) {
           <p class="tour__text"></p>
           <div class="tour__dots"></div>
           <div class="tour__actions">
-            <button class="tour__skip" data-act="skip">略過導覽</button>
+            <button class="tour__skip" data-act="skip">Skip</button>
             <span class="tour__grow"></span>
             <button class="btn" data-act="prev">上一步</button>
             <button class="btn btn--primary" data-act="next">下一步</button>

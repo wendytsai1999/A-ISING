@@ -3,7 +3,7 @@
 import { esc } from '../../util.js';
 import { toName } from '../../music.js';
 import { lineAt } from '../../practice/song.js';
-import { charStat } from '../../practice/fake-user.js';
+import { charStat, lookOf } from '../../practice/fake-user.js';
 
 export class Lyrics {
   constructor(box, { song, singer }) {
@@ -37,6 +37,11 @@ export class Lyrics {
       col.user.style.width = `${Math.round(k * col.w)}px`;
       col.user.style.top = `${col.y(c.midi + this.key + s.mean)}px`;
       col.user.classList.toggle('is-off', !s.ok);
+      // 不穩：波浪線；沒氣：越後面越淡、斷斷續續（和報告頁同一套畫法）
+      const look = lookOf(this.singer, this.song, li, ci);
+      col.user.classList.toggle('is-shaky', look.shaky);
+      col.user.classList.toggle('is-weak', look.weak > 0);
+      col.user.style.opacity = look.weak ? (1 - 0.6 * look.weak).toFixed(2) : '';
     });
   }
 

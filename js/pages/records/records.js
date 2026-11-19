@@ -14,6 +14,15 @@ import { initDemoPanel } from '../../components/demo-panel.js';
 import { currentRecords, deleteRecord, loadRecordFile, statsOf, hasReport } from '../../records/records.js';
 import { buildTracking, trackingHTML } from './tracking.js';
 import { buildScenarios } from './scenarios.js';
+import { TOUR_BUTTON, bindTourButton } from '../../components/tour.js';
+
+// 「使用導覽」（按了才開始，不自動播放）
+const TOUR = [
+  { target: '.rc-voice', place: 'bottom', title: '認識你的聲音', text: '首頁儲存的測驗結果：音域、聽音跟唱、選的歌。' },
+  { target: '.rc-row:not(.rc-row--head)', place: 'bottom', title: '演唱紀錄', text: '每次按 AI 分析都會存一筆，最多六筆。按「查看」看完整報告，「刪除」可以空出位置。' },
+  { target: '.rc-row:not(.rc-row--head) .rc-check', place: 'right', title: '勾選要比較的紀錄', text: '勾兩筆以上，就可以做綜合分析。' },
+  { target: '#track-btn', place: 'top', title: '綜合分析', text: '比較勾選的幾次演唱，告訴你哪裡進步了、哪些問題每次都有、接下來可以怎麼練。', done: '我知道了' }
+];
 
 const $ = (sel) => document.querySelector(sel);
 const DEMO = new URLSearchParams(location.search).get('demo');
@@ -29,6 +38,7 @@ async function main() {
     throw err;
   }
   renderNav($('#nav'), { active: 'records', initial: demoUser.user.initial });
+  bindTourButton(TOUR);
   $('[data-act="logout"]').addEventListener('click', () => store.update((d) => { d.loggedIn = false; }));
 
   // ---------- 狀態（展示情境只存在記憶體裡） ----------
@@ -84,6 +94,7 @@ async function main() {
       <header class="rc-head">
         <div class="r-head__title"><div class="eyebrow">RECORDS</div><h1 class="main__title">演唱紀錄</h1></div>
         <span class="rc-count">${S.records.length}／${file.max} 筆</span>
+        ${TOUR_BUTTON}
       </header>
       ${voiceHTML()}
       ${S.pending ? alertHTML({ heading: `等待存入：${S.pending.title} － ${S.pending.artist}　${S.pending.date}`, body: '紀錄已滿，刪除一筆舊紀錄後會自動存入。', closable: false }) : ''}

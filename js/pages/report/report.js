@@ -10,8 +10,19 @@ import { showToast } from '../../components/toast.js';
 import { playAnalyzing } from '../../components/analyzing.js';
 import { audioUrl } from '../../practice/song.js';
 import { currentRecords, takeRecord, openRecord } from '../../records/records.js';
-import { earlyOf, profileOf } from '../../practice/fake-user.js';
+import { earlyOf, profileOf, lookOf } from '../../practice/fake-user.js';
 import { ANALYZE_STEPS } from '../practice/scenarios.js';
+import { TOUR_BUTTON, bindTourButton } from '../../components/tour.js';
+
+// 「使用導覽」（按了才開始，不自動播放）
+const TOUR = [
+  { target: '.r-empty', place: 'bottom', title: '還沒有報告', text: '到練唱頁錄一段，按「AI 分析」，你的練唱報告就會出現在這裡。', done: '我知道了' },
+  { target: '.r-cards', place: 'bottom', title: '這次的結果', text: '唱對幾句、用的 Key，還有一段綜合評價。' },
+  { target: '.r-line', place: 'top', title: '逐句建議', text: '每句都有標籤和建議。灰線是正確音高，彩色線是你唱的；不準的字下面會寫你唱成什麼音、差幾個半音。' },
+  { target: '.r-line__btns', place: 'left', title: '聽這一句', text: '「我的歌聲」和「原唱」可以輪流聽，比較差在哪裡。' },
+  { target: '.r-player', place: 'top', title: '整首播放和下載', text: '把有唱的段落接起來播放，也可以下載成音檔。' },
+  { target: '.r-foot', place: 'top', title: '接下來', text: '可以再唱一次，或到歷史紀錄看看自己的進步。', done: '我知道了' }
+];
 import { playLine, renderMix, sungSegments, mixLength, loadBuffer, voiceUrl } from '../../audio/sing.js';
 
 // 從紀錄頁「查看」過來：report.html?rec=紀錄 id；沒有就是最近一次練唱
@@ -39,6 +50,7 @@ async function main() {
     throw err;
   }
   renderNav($('#nav'), { active: REC_ID ? 'records' : 'report', initial: demo.user.initial });
+  bindTourButton(TOUR);
   $('[data-act="logout"]').addEventListener('click', () => store.update((d) => { d.loggedIn = false; }));
 
   if (!rec) {
@@ -130,7 +142,11 @@ async function main() {
         } else {
           // 搶拍往左、拖拍往右，最多 18px
           const shift = early ? -Math.sign(early) * Math.min(18, (Math.abs(early) / Math.max(0.1, c.end - c.start)) * 40) : 0;
-          user = `<i class="r-bar ${s.ok ? 'r-bar--ok' : 'r-bar--off'}" style="top:${top(t + s.mean)}px;left:${shift}px"></i>`;
+          // 不穩：畫成抖動的波浪線；沒氣：越後面越淡、變成斷斷續續的虛線
+          const look = lookOf(singer, song, l.li, ci);
+          const cls = `${s.ok ? 'r-bar--ok' : 'r-bar--off'}${look.shaky ? ' r-bar--shaky' : ''}${look.weak ? ' r-bar--weak' : ''}`;
+          const fade = look.weak ? `;opacity:${(1 - 0.6 * look.weak).toFixed(2)}` : '';
+          user = `<i class="r-bar ${cls}" style="top:${top(t + s.mean)}px;left:${shift}px${fade}"></i>`;
           if (early) user += '<i class="r-beat"></i>';
         }
         if (early && ci === firstSung) row1 = early > 0 ? `← 早 ${early.toFixed(1)} 秒` : `晚 ${(-early).toFixed(1)} 秒 →`;
@@ -309,6 +325,7 @@ function headHTML(title, sub) {
         <div class="p-head__row"><h1 class="main__title">${esc(title)}</h1>${sub ? `<span class="r-head__sub">${esc(sub)}</span>` : ''}</div>
       </div>
       <span class="r-head__ai">AI 分析・僅供參考</span>
+      ${TOUR_BUTTON}
     </header>`;
 }
 
@@ -323,14 +340,16 @@ function summary(r) {
   const issues = [
     ['flat', '有幾句整句偏低'],
     ['sharp', '有幾句偏高，可能太用力'],
-    ['unstable', '有幾句高低不穩'],
+    ['unstable', '有幾句高低不穩、聲音發抖'],
     ['droop', '長音尾端會往下掉'],
+    ['breath', '有幾句句尾沒氣，聲音變小、音往下沉'],
     ['rush', '有地方比伴奏早唱'],
     ['drag', '有地方比伴奏晚進來']
   ].filter(([n]) => count(n)).map(([, t]) => t);
   if (issues.length) parts.push(`可以再加強的地方：${issues.join('，')}。`);
   const tips = [];
   if (count('flat') || count('droop')) tips.push('唱高音和長音時把氣撐住');
+  if (count('breath')) tips.push('句子開始前先吸飽氣');
   if (count('sharp')) tips.push('放鬆喉嚨');
   if (count('rush')) tips.push('先聽伴奏的拍點再出聲');
   if (count('drag')) tips.push('提前吸氣、拍點一到就出聲');

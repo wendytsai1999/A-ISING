@@ -155,3 +155,43 @@
 .failed__icon { width: 56px; height: 56px; border-radius: 50%; background: var(--red); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 26px; }
 .failed h2 { font-size: 24px; letter-spacing: 0.12em; }
 .failed p { font-size: 15px; line-height: 1.9; color: var(--sub); }
+
+/* ---------- 使用導覽（第一次進首頁自動跳出） ---------- */
+.tour { position: fixed; inset: 0; z-index: 150; animation: fade-in .25s ease; }
+.tour.is-out { opacity: 0; transition: opacity .2s ease; }
+/* 亮框：用超大陰影把框外面變暗；換步驟時滑過去 */
+.tour__hole {
+  position: absolute; border-radius: var(--r-card);
+  box-shadow: 0 0 0 200vmax rgba(30, 30, 30, 0.58);
+  outline: 3px solid var(--accent); outline-offset: 0;
+  transition: left .4s ease, top .4s ease, width .4s ease, height .4s ease;
+  animation: tour-pulse 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes tour-pulse { 50% { outline-offset: 6px; outline-color: rgba(232, 190, 30, .55); } }
+.tour__card {
+  position: absolute; width: 380px; max-width: calc(100% - 32px);
+  padding: 26px 28px 22px; background: var(--white);
+  border: var(--line); border-radius: var(--r-card);
+  display: flex; flex-direction: column; gap: 10px;
+  transition: left .4s ease, top .4s ease;
+}
+.tour__card.is-in { animation: tour-in .35s ease; }
+.tour.is-follow .tour__hole, .tour.is-follow .tour__card { transition: none; }   /* 捲動時立刻跟上 */
+@keyframes tour-in { from { opacity: 0; transform: translateY(8px); } }
+.tour__card.is-center { width: 440px; padding: 34px 36px 28px; }
+.tour__top { display: flex; justify-content: space-between; align-items: center; }
+.tour__count { font-family: var(--font-num); font-weight: 700; color: var(--sub); font-size: 14px; }
+.tour__title { font-size: 22px; font-weight: 700; letter-spacing: 0.08em; }
+.tour__text { font-size: 15px; line-height: 1.7; color: var(--sub); }
+.tour__dots { display: flex; gap: 6px; margin-top: 4px; }
+.tour__dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--off-line); transition: width .25s ease, background .25s ease; }
+.tour__dots i.is-on { width: 22px; border-radius: 4px; background: var(--ink); }
+.tour__actions { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.tour__grow { flex: 1; }
+.tour__skip { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; color: var(--sub); text-decoration: underline; cursor: pointer; }
+.tour .is-hidden { display: none; }
+/* 首頁標題右邊「使用導覽」：之後想再看一次 */
+.tour-again { position: absolute; right: 0; top: 0; white-space: nowrap; }   /* 樣子同「直接練唱 →」（.link-arrow） */
+/* 練唱、報告、紀錄頁：放在標題列最右邊 */
+.tour-again--inline { position: static; align-self: flex-end; margin-bottom: 6px; flex-shrink: 0; }

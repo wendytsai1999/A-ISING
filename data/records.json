@@ -7,9 +7,9 @@
     { "id": "tide-1108", "date": "2026/11/08", "song": "tide", "title": "愛如潮水", "artist": "張信哲", "key": -1, "lines": [0, 15], "singer": "tide-demo-user-1108", "voice": "tide-me-1108" },
     { "id": "rewind-1105", "date": "2026/11/05", "song": "rewind", "title": "倒帶", "artist": "蔡依林", "key": 1, "lines": [0, 15], "singer": "rewind-demo-user-1105", "voice": "rewind-me-1105" },
     { "id": "luck-1030", "date": "2026/10/30", "title": "小幸運", "artist": "田馥甄", "key": 1,
-      "stats": { "scored": 14, "okLines": 9, "avgDev": 0.42, "issues": { "flat": 3, "droop": 2, "rush": 1 } } },
+      "stats": { "scored": 14, "okLines": 9, "avgDev": 0.62, "issues": { "flat": 3, "droop": 2, "breath": 1, "rush": 1 } } },
     { "id": "later-1026", "date": "2026/10/26", "title": "後來", "artist": "劉若英", "key": 0,
-      "stats": { "scored": 16, "okLines": 9, "avgDev": 0.47, "issues": { "flat": 2, "sharp": 2, "droop": 3, "unstable": 1 } } }
+      "stats": { "scored": 16, "okLines": 9, "avgDev": 0.68, "issues": { "flat": 2, "sharp": 2, "droop": 3, "unstable": 1, "breath": 2 } } }
   ],
   "demo": {
     "note": "展示情境用：紀錄已滿時等待存入的這次演唱、預設的認識你的聲音",

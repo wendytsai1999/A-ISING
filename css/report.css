@@ -55,6 +55,15 @@
 .r-bar--ok { background: var(--green); }
 .r-bar--off { background: var(--red); }
 .r-bar--drop { left: 18px; width: 24px; transform: rotate(16deg); transform-origin: left center; }
+/* 不穩：音高線畫成抖動的波浪 */
+.r-bar--shaky {
+  height: 12px; margin-top: -2px; border-radius: 0;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='12'%3E%3Cpath d='M0 6 Q2.5 0 5 6 T10 6' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") repeat-x left center / 10px 12px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='12'%3E%3Cpath d='M0 6 Q2.5 0 5 6 T10 6' fill='none' stroke='black' stroke-width='3.2'/%3E%3C/svg%3E") repeat-x left center / 10px 12px;
+}
+/* 沒氣：越後面越淡，變成斷斷續續 */
+.r-bar--weak.r-bar--ok { background: repeating-linear-gradient(90deg, var(--green) 0 7px, transparent 7px 11px); }
+.r-bar--weak.r-bar--off { background: repeating-linear-gradient(90deg, var(--red) 0 7px, transparent 7px 11px); }
 .r-beat { position: absolute; left: -1px; top: -4px; height: 60px; border-left: 2px dashed var(--red); }
 .r-ch__note { font-size: 11px; font-family: var(--font-num); font-weight: 700; color: var(--off-text); line-height: 1; }
 .r-ch__dev { font-size: 11px; font-family: var(--font-num); font-weight: 700; color: var(--red-text); line-height: 1.2; white-space: nowrap; min-height: 13px; }

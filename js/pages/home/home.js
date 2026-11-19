@@ -12,6 +12,18 @@ import { PitchStep } from './pitch-step.js';
 import { SongStep } from './song-step.js';
 import { reportHTML, playAnalyzing } from './report.js';
 import { buildScenarios } from './scenarios.js';
+import { startTour } from '../../components/tour.js';
+
+// 使用導覽的步驟（第一步沒有 target＝畫面中間的歡迎卡）
+const TOUR = [
+  { title: '歡迎來到 A-ISING！', text: '第一次來嗎？花 30 秒帶你看一下這個網頁怎麼用。之後也可以按右上角「使用導覽」再看一次。' },
+  { target: '.nav', place: 'right', title: '左邊是導覽列', text: '首頁、練唱、報告、紀錄都在這裡切換。現在在首頁，先認識你的聲音。' },
+  { target: '#step-range', place: 'right', title: '01 測音域', text: '按「開始」，用平常唱歌的聲音從最低音慢慢唱到最高音，系統會記下你唱得到的範圍。' },
+  { target: '#step-pitch', place: 'right', title: '02 聽音跟唱', text: '聽到提示音後，跟著唱出同一個音，一共五個音，看看你唱得準不準。' },
+  { target: '#step-song', place: 'left', title: '03 選歌', text: '輸入想練的歌，系統會用你的音域判斷適不適合，並建議要升或降幾個 Key。' },
+  { target: '#save-btn', place: 'right', title: '儲存，產生聲音報告', text: '三個步驟做完按「儲存」，下面就會出現你的聲音報告和推薦。' },
+  { target: '#skip-btn', place: 'top', title: '想先唱再說？', text: '也可以按「直接練唱」跳過測驗，之後再回來補測。準備好了就開始吧！' }
+];
 
 const pick = (o) => ({ range: o?.range ?? null, pitch: o?.pitch ?? null, song: o?.song ?? null });
 const same = (a, b) => JSON.stringify(pick(a)) === JSON.stringify(pick(b));
@@ -126,7 +138,10 @@ async function main() {
     groups: buildScenarios({ songs, demo })
   });
 
-  // 第一次進入：開始之前；之後每次進入：提醒用有線耳麥
+  // 標題右邊「使用導覽」：隨時可以再看一次
+  document.getElementById('tour-btn').addEventListener('click', () => startTour(TOUR));
+
+  // 第一次進入：開始之前＋使用導覽；之後每次進入：提醒用有線耳麥
   const first = !store.get().seenWelcome;
   if (first) {
     await openDialog({
@@ -136,6 +151,7 @@ async function main() {
         <div class="dialog__point"><span class="dialog__point-no">02</span><div><b>設備</b><span class="dialog__text">請使用有線耳麥。藍牙耳機會延遲，影響音準判斷。</span></div></div>`
     });
     store.update((d) => { d.seenWelcome = true; });
+    await startTour(TOUR);   // 第一次：接著自動跳使用導覽
   } else {
     await openDialog({ eyebrow: 'HEADSET', heading: '請使用有線耳麥', body: '藍牙耳機會延遲，影響音準判斷。' });
   }

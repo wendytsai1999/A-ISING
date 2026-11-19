@@ -11,6 +11,17 @@ import { loadSong, loadSinger, audioUrl, flatChars, PLAYABLE } from '../../pract
 import { SUNG_MIN } from '../../practice/fake-user.js';
 import { Lyrics } from './lyrics.js';
 import { buildScenarios } from './scenarios.js';
+import { bindTourButton } from '../../components/tour.js';
+
+// 「使用導覽」（按了才開始，不自動播放）
+const TOUR = [
+  { target: '#settings', place: 'bottom', title: '練唱設定', text: '可以換歌、選原唱或伴奏、調音量和 Key、跳過前奏、開關音高線。開始錄音後，歌和 Key 就會鎖住。' },
+  { target: '#play-btn', place: 'bottom', title: '▶ 播放', text: '只播歌、不錄音，可以先聽熟旋律。' },
+  { target: '#rec-btn', place: 'bottom', title: '● 錄音', text: '按下就開始錄你的歌聲。' },
+  { target: '#progress', place: 'bottom', title: '進度條', text: '隨時可以拖到想重唱的地方。' },
+  { target: '#lyrics', place: 'top', title: '歌詞和音高線', text: '灰線是正確的音高，你唱的音會疊在上面：綠色＝準、紅色＝不準。' },
+  { target: '#analyze-btn', place: 'top', title: 'AI 分析', text: '唱完按這裡，就會產生逐句的練唱報告。', done: '開始練唱' }
+];
 
 const $ = (id) => document.getElementById(id);
 const fmt = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
@@ -79,6 +90,7 @@ async function main() {
     throw err;
   }
   renderNav($('nav'), { active: 'practice', initial: demo.user.initial });
+  bindTourButton(TOUR);
   if (NO_SONG) song = await noSongIntro();
   $('song-title').textContent = song.title;
   $('song-artist').textContent = song.artist;

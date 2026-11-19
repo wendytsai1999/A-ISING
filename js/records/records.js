@@ -66,7 +66,7 @@ export async function openRecord(rec) {
   return { song, singer, sung, result: analyzeTake(singer, song, sung, rec.key) };
 }
 
-const ISSUES = ['flat', 'sharp', 'unstable', 'droop', 'rush', 'drag'];
+const ISSUES = ['flat', 'sharp', 'unstable', 'droop', 'breath', 'rush', 'drag'];
 
 /** 追蹤報告用的數字：{ scored, okLines, rate, avgDev, issues:{名稱:句數} } */
 export async function statsOf(rec) {

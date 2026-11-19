@@ -123,6 +123,15 @@
 .cur__bar--target { width: 60px; background: var(--off-line); }
 .cur__bar--user { width: 0; background: var(--green); transition: top .12s linear; }
 .cur__bar--user.is-off { background: var(--red); }
+/* 不穩：波浪線 */
+.cur__bar--user.is-shaky {
+  height: 14px; margin-top: -2px; border-radius: 0;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M0 7 Q3 0 6 7 T12 7' fill='none' stroke='black' stroke-width='3.6'/%3E%3C/svg%3E") repeat-x left center / 12px 14px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M0 7 Q3 0 6 7 T12 7' fill='none' stroke='black' stroke-width='3.6'/%3E%3C/svg%3E") repeat-x left center / 12px 14px;
+}
+/* 沒氣：斷斷續續、變淡（淡多少由 JS 設 opacity） */
+.cur__bar--user.is-weak { background: repeating-linear-gradient(90deg, var(--green) 0 8px, transparent 8px 12px); }
+.cur__bar--user.is-weak.is-off { background: repeating-linear-gradient(90deg, var(--red) 0 8px, transparent 8px 12px); }
 .cur__note { font-size: 12px; font-family: var(--font-num); font-weight: 700; color: var(--off-text); line-height: 1; }
 .lyr.no-pitch .cur__pitch, .lyr.no-pitch .cur__note { display: none; }
 .lyr.many .cur { gap: 12px; }

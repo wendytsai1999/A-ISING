@@ -127,9 +127,9 @@
 .ptrans__note { flex-shrink: 0; font-size: 12px; color: var(--off-text); white-space: nowrap; }
 /* 不穩：波浪線 */
 .cur__bar--user.is-shaky {
-  height: 14px; margin-top: -2px; border-radius: 0;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M0 7 Q3 0 6 7 T12 7' fill='none' stroke='black' stroke-width='3.6'/%3E%3C/svg%3E") repeat-x left center / 12px 14px;
-          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='14'%3E%3Cpath d='M0 7 Q3 0 6 7 T12 7' fill='none' stroke='black' stroke-width='3.6'/%3E%3C/svg%3E") repeat-x left center / 12px 14px;
+  height: 10px; margin-top: 0px; border-radius: 0;   /* 平緩的波浪：不要太誇張 */
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='10'%3E%3Cpath d='M0 5.0 Q6.5 2.8 13.0 5.0 T26 5.0' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 26px 10px;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='10'%3E%3Cpath d='M0 5.0 Q6.5 2.8 13.0 5.0 T26 5.0' fill='none' stroke='black' stroke-width='3.6' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x left center / 26px 10px;
 }
 /* 沒氣：斷斷續續、變淡（淡多少由 JS 設 opacity） */
 .cur__bar--user.is-weak { background: repeating-linear-gradient(90deg, var(--green) 0 8px, transparent 8px 12px); }

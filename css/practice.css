@@ -123,6 +123,8 @@
 .cur__bar--target { width: 60px; background: var(--off-line); }
 .cur__bar--user { width: 0; background: var(--green); transition: top .12s linear; }
 .cur__bar--user.is-off { background: var(--red); }
+/* 錄音鈕旁：展示版說明（不會真的錄音，播的是模擬歌聲） */
+.ptrans__note { flex-shrink: 0; font-size: 12px; color: var(--off-text); white-space: nowrap; }
 /* 不穩：波浪線 */
 .cur__bar--user.is-shaky {
   height: 14px; margin-top: -2px; border-radius: 0;

@@ -12,6 +12,7 @@ import { SUNG_MIN } from '../../practice/fake-user.js';
 import { Lyrics } from './lyrics.js';
 import { buildScenarios } from './scenarios.js';
 import { bindTourButton } from '../../components/tour.js';
+import { voiceUrl } from '../../audio/sing.js';
 
 // 「使用導覽」（按了才開始，不自動播放）
 const TOUR = [
@@ -116,6 +117,8 @@ async function main() {
   const hasTake = () => cov.some((v) => v >= SUNG_MIN);
 
   const A = { original: $('a-original'), inst: $('a-inst') };
+  // 展示版：按「錄音」時一起播放模擬的「我的歌聲」（和報告頁同一個音檔，跟畫面上的音高線對齊）
+  const me = $('a-me');
   const active = () => A[S.mode];
   const lyrics = new Lyrics($('lyrics'), { song, singer });
 
@@ -126,6 +129,16 @@ async function main() {
       a.addEventListener('loadedmetadata', () => { a.currentTime = keepTime; }, { once: true });
     });
     lyrics.setKey(S.key);
+    if (!NO_SONG) { me.src = voiceUrl(`${song.id}-me`, S.key); me.volume = S.volume; }
+  }
+
+  // 模擬歌聲只在「歌在播＋錄音中」時出聲，時間跟著歌走（暫停、拖進度條、點歌詞、換原唱／伴奏都會跟上）
+  function syncVoice(t) {
+    if (NO_SONG) return;
+    const on = S.playing && S.rec === 'on';
+    if (!on) { if (!me.paused) me.pause(); return; }
+    if (me.paused) { me.currentTime = t; me.play().catch(() => {}); return; }
+    if (Math.abs(me.currentTime - t) > 0.12) me.currentTime = t;   // 差太多就對齊回來
   }
 
   // ---------- 計分：只算「歌在播＋錄音中」 ----------
@@ -221,6 +234,7 @@ async function main() {
   function loop() {
     const t = active().currentTime || 0;
     track(t);
+    syncVoice(t);
     refresh();
     requestAnimationFrame(loop);
   }
@@ -270,6 +284,7 @@ async function main() {
   $('volume').addEventListener('input', (e) => {
     S.volume = Number(e.target.value) / 100;
     Object.values(A).forEach((a) => { a.volume = S.volume; });
+    me.volume = S.volume;
   });
 
   document.querySelectorAll('.kbtn').forEach((b) => b.addEventListener('click', () => {

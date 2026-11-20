@@ -59,6 +59,7 @@
       <div class="ptrans">
         <button class="pbtn" id="play-btn" aria-label="播放歌曲">▶</button>
         <button class="recbtn" id="rec-btn"><span class="recbtn__icon"></span><span class="recbtn__text">錄音</span></button>
+        <span class="ptrans__note">展示版：不會錄下你的聲音，播放的是模擬歌聲</span>
         <input type="range" class="prog" id="progress" min="0" max="1000" value="0" aria-label="播放位置">
         <span class="ptime num" id="time">00:00 / 04:24</span>
       </div>
@@ -75,6 +76,7 @@
   </div>
   <audio id="a-original" preload="auto"></audio>
   <audio id="a-inst" preload="auto"></audio>
+  <audio id="a-me" preload="auto"></audio>
   <script type="module" src="js/pages/practice/practice.js"></script>
 </body>
 </html>
